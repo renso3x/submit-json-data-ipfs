@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPFS Resume Upload</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="page-shell">
+        <div class="card">
+            <div class="header-row">
+                <div>
+                    <h2>
+                        IPFS Resume Upload
+                        <span class="badge">Pinata</span>
+                    </h2>
+                    <p class="subtitle">Attach your photo and resume, then pin the metadata to IPFS.</p>
+                    <div class="chip-row">
+                        <span class="chip">IPFS</span>
+                        <span class="chip">Pinata Cloud</span>
+                        <span class="chip">CID Metadata</span>
+                    </div>
+                </div>
+            </div>
+
+            <form method="post" enctype="multipart/form-data" id="resumeForm">
+                <div class="form-group">
+                    JWT Token: 
+                    <input type="text" id="jwt-input" name="jwt-input" placeholder="Enter your Pinata JWT" />
+                </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="user-photo">2x2 picture <span class="req">*</span></label>
+                        <input type="file" id="user-photo" name="user-photo" accept="image/*" />
+                        <div class="file-hint">PNG or JPG, square aspect recommended.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="resume">Resume / CV <span class="req">*</span></label>
+                        <input type="file" id="resume" name="resume" accept="application/pdf" />
+                        <div class="file-hint">PDF format is preferred.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="first-name">First name <span class="req">*</span></label>
+                        <input type="text" id="first-name" name="first-name" placeholder="Juan" />
+                    </div>
+                    <div class="form-group">
+                        <label for="last-name">Last name <span class="req">*</span></label>
+                        <input type="text" id="last-name" name="last-name" placeholder="Dela Cruz" />
+                    </div>
+                    <div class="form-group">
+                        <label for="middle-name">Middle name</label>
+                        <input type="text" id="middle-name" name="middle-name" placeholder="S." />
+                    </div>
+                    <div class="form-group">
+                        <label for="position">Position</label>
+                        <input type="text" id="position" name="position" placeholder="Frontend Developer" />
+                    </div>
+                </div>
+
+                <div class="actions-row">
+                    <button id="uploadButton" type="submit">
+                        <span class="pulse"></span>
+                        Submit to IPFS
+                    </button>
+                    <div class="status" id="status-wrapper">
+                        <div class="status-dot"></div>
+                        <span id="submitting-status">Waiting to submit…</span>
+                    </div>
+                </div>
+
+                <span class="cid" id="cid-output"></span>
+            </form>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
